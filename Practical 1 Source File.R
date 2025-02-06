@@ -37,6 +37,7 @@ print(beta)
 fit <- lm(dist ~ speed, data = cars)
 summary(fit)
 
+# Please ignore this, I'm not sure what I'm doing
 # f <- function(x, y) {
 #   B <- solve(t(X) %*% X) %*% t(X) %*% Y
 #   Y_hat <- X %*% B 
@@ -48,5 +49,5 @@ summary(fit)
 #   return(list("coeffients" = ))
 # }
 
-usethis::use_git()
+
 

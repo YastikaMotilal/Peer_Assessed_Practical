@@ -1,6 +1,7 @@
 project:
    type: website
    title: "Practical 1"
+   output-dir: _site
   
   
 
