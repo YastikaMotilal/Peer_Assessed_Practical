@@ -22,7 +22,7 @@ print(rows_with_na) # printing all rows that have missing values
 
 ## Cleaning the data set before Question 2
 
-Using complete.cases() to clean the dataset and get rid of missing values
+Using complete.cases() to clean the data set and get rid of missing values
 
 ```{r}
 # Cleaning the data to exclude the rows with missing values
