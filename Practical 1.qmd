@@ -68,4 +68,4 @@ summary(fit)
 ```
 
 Both methods of finding the beta coefficients gives consistent results, with the intercept being -17.5791 
-and the slope coefficient of speed being 3.9324.
+and the slope coefficient of speed being 3.9324

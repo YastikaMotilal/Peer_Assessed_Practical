@@ -37,4 +37,5 @@ print(beta)
 fit <- lm(dist ~ speed, data = cars)
 summary(fit)
 
+usethis::use_git()
 
