@@ -9,24 +9,36 @@ date: "2025-02-06"
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
+## Opening code to initialize Quarto
+
 ```{r}
 #| echo: false
 library(quarto)
 ```
+
+## Question 1
+
 Finding all the missing values from the airqualiy data set
+
 ```{r}
 # Finding all the rows that have missing values in airquality dataset
 rows_with_na <- airquality[rowSums(is.na(airquality)) > 0, ]
 print(rows_with_na) # printing all rows that have missing values
 ```
 
+## Cleaning the data set before Question 2
+
 Using complete.cases() to clean the dataset and get rid of missing values
+
 ```{r}
 # Cleaning the data to exclude the rows with missing values
 airquality_cleaned <- airquality[complete.cases(airquality), ]
 ```
 
-Finding the mean, standard deviation, minimum and maximum for ozone level 
+## Question 2
+
+Finding the mean, standard deviation, minimum and maximum for ozone level
+
 ```{r}
 # Getting the mean, standard deviation, minimum and maximum for temperature 
 meanTemp <- mean(airquality_cleaned$Temp) 
@@ -38,7 +50,8 @@ cat("The mean temperature is", meanTemp, "and the standard deviation is", sdTemp
 cat("The minimum temperature is", minTemp, "and the maximum temperature is", maxTemp)
 ```
 
-Finding the mean, standard deviation, minimum and maximum for ozone level 
+Finding the mean, standard deviation, minimum and maximum for ozone level
+
 ```{r}
 # Geting the mean, standard deviation, minimum and maximum for ozone level 
 meanOzone <- mean(airquality_cleaned$Ozone) 
@@ -50,7 +63,10 @@ cat("The mean ozone level is", meanOzone, "and the standard deviation is", sdOzo
 cat("The minimum ozone level is", minOzone, "and the maximum ozone level is", maxOzone)
 ```
 
+## Question 3
+
 Finding the beta coefficients
+
 ```{r}
 # First creating a design matrix 
 X <- model.matrix(dist ~ speed, data = cars)
@@ -61,11 +77,13 @@ beta <- solve(t(X) %*% X) %*% t(X) %*% Y
 print(beta)
 ```
 
+## Question 4
+
 Now will check the coefficients using lm() function
+
 ```{r}
 fit <- lm(dist ~ speed, data = cars)
 summary(fit)
 ```
 
-Both methods of finding the beta coefficients gives consistent results, with the intercept being -17.5791 
-and the slope coefficient of speed being 3.9324
+Both methods of finding the beta coefficients gives consistent results, with the intercept being -17.5791 and the slope coefficient of speed being 3.9324

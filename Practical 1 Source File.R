@@ -37,5 +37,16 @@ print(beta)
 fit <- lm(dist ~ speed, data = cars)
 summary(fit)
 
+# f <- function(x, y) {
+#   B <- solve(t(X) %*% X) %*% t(X) %*% Y
+#   Y_hat <- X %*% B 
+#   residuals <- Y - Y_hat  
+#   n <- nrow(X)  
+#   p <- ncol(X)  
+#   sigma_squared <- sum(residuals^2) / (n - p)
+#   std_error <- 
+#   return(list("coeffients" = ))
+# }
+
 usethis::use_git()
 

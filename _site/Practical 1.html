@@ -150,6 +150,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="quarto" class="level2">
 <h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
 <p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+</section>
+<section id="opening-code-to-initialize-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="opening-code-to-initialize-quarto">Opening code to initialize Quarto</h2>
+</section>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <p>Finding all the missing values from the airqualiy data set</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding all the rows that have missing values in airquality dataset</span></span>
@@ -201,11 +207,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 150    NA     145 13.2   77     9  27</code></pre>
 </div>
 </div>
+</section>
+<section id="cleaning-the-data-set-before-question-2" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-the-data-set-before-question-2">Cleaning the data set before Question 2</h2>
 <p>Using complete.cases() to clean the dataset and get rid of missing values</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cleaning the data to exclude the rows with missing values</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>airquality_cleaned <span class="ot">&lt;-</span> airquality[<span class="fu">complete.cases</span>(airquality), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
 <p>Finding the mean, standard deviation, minimum and maximum for ozone level</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the mean, standard deviation, minimum and maximum for temperature </span></span>
@@ -240,6 +252,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>The minimum ozone level is 1 and the maximum ozone level is 168</code></pre>
 </div>
 </div>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
 <p>Finding the beta coefficients</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First creating a design matrix </span></span>
@@ -255,6 +270,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 speed         3.932409</code></pre>
 </div>
 </div>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
 <p>Now will check the coefficients using lm() function</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
