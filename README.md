@@ -1,7 +1,7 @@
 # README
 
 The purpose of this project is to
-`[briefly describe the project's goals and objectives]`
+`get statistical information from data and beta coefficients`
 
 ## Reproducing the analysis
 
