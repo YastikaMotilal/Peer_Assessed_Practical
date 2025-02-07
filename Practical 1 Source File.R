@@ -37,17 +37,26 @@ print(beta)
 fit <- lm(dist ~ speed, data = cars)
 summary(fit)
 
-# Please ignore this, I'm not sure what I'm doing
-# f <- function(x, y) {
-#   B <- solve(t(X) %*% X) %*% t(X) %*% Y
-#   Y_hat <- X %*% B 
-#   residuals <- Y - Y_hat  
-#   n <- nrow(X)  
-#   p <- ncol(X)  
-#   sigma_squared <- sum(residuals^2) / (n - p)
-#   std_error <- 
-#   return(list("coeffients" = ))
-# }
+
+ f <- function(a, b) {
+   Bhat <- solve(t(a) %*% a) %*% t(a) %*% b
+   Y_hat <- a %*% Bhat 
+   residuals <- b - Y_hat  
+   n <- nrow(a)  
+   p <- ncol(a)  
+   sigma_squared <- sum(residuals^2) / (n - p)
+   var_Bhat <- sigma_squared * solve(t(a) %*% a)  
+   std_error <- sqrt(diag(var_Bhat))
+   return(list("coeffients" = Bhat, "std error" = std_error))
+ }
+ 
+ z <- f(X, Y)
+ print(z)
+ fit$coefficients
+ z$coeffients
+ round(fit$coefficients, 5) == round(z$coeff, 5)
+ summary(fit)[["coefficients"]][, "Std. Error"]
+ 
 
 
 

@@ -80,4 +80,28 @@ fit <- lm(dist ~ speed, data = cars)
 summary(fit)
 ```
 
-Both methods of finding the beta coefficients gives consistent results, with the intercept being -17.5791 and the slope coefficient of speed being 3.9324
+Both methods of finding the beta coefficients gives consistent results, with the intercept being -17.5791 and the slope coefficient of speed being 3.9324 but we will check further if they truly give us the true value
+
+```{r}
+f <- function(a, b) {
+   Bhat <- solve(t(a) %*% a) %*% t(a) %*% b
+   Y_hat <- a %*% Bhat 
+   residuals <- b - Y_hat  
+   n <- nrow(a)  
+   p <- ncol(a)  
+   sigma_squared <- sum(residuals^2) / (n - p)
+   var_Bhat <- sigma_squared * solve(t(a) %*% a)  
+   std_error <- sqrt(diag(var_Bhat))
+   return(list("coeffients" = Bhat, "std error" = std_error))
+ }
+ 
+ z <- f(X, Y)
+ print(z)
+ fit$coefficients
+ z$coeffients
+ round(fit$coefficients, 5) == round(z$coeff, 5)
+ summary(fit)[["coefficients"]][, "Std. Error"]
+ 
+```
+
+This verifies that both our calculated values and the values obtained by running the model gives us the same answers.
