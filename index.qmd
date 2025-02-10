@@ -1,0 +1,107 @@
+---
+title: "Practical Day 1"
+author: "Yastika Motilal"
+format: html
+date: "2025-02-06"
+---
+
+```{r}
+#| echo: false
+library(quarto)
+```
+
+## Question 1
+
+Finding all the missing values from the airqualiy data set
+
+```{r}
+# Finding all the rows that have missing values in airquality dataset
+rows_with_na <- airquality[rowSums(is.na(airquality)) > 0, ]
+print(rows_with_na) # printing all rows that have missing values
+```
+
+## Cleaning the data set before Question 2
+
+Using complete.cases() to clean the data set and get rid of missing values
+
+```{r}
+# Cleaning the data to exclude the rows with missing values
+airquality_cleaned <- airquality[complete.cases(airquality), ]
+```
+
+## Question 2
+
+Finding the mean, standard deviation, minimum and maximum for ozone level
+
+```{r}
+# Getting the mean, standard deviation, minimum and maximum for temperature 
+meanTemp <- mean(airquality_cleaned$Temp) 
+sdTemp <- sd(airquality_cleaned$Temp)
+minTemp <- min(airquality_cleaned$Temp)
+maxTemp <- max(airquality_cleaned$Temp)
+# Now printing out the output
+cat("The mean temperature is", meanTemp, "and the standard deviation is", sdTemp)
+cat("The minimum temperature is", minTemp, "and the maximum temperature is", maxTemp)
+```
+
+Finding the mean, standard deviation, minimum and maximum for ozone level
+
+```{r}
+# Geting the mean, standard deviation, minimum and maximum for ozone level 
+meanOzone <- mean(airquality_cleaned$Ozone) 
+sdOzone <- sd(airquality_cleaned$Ozone)
+minOzone <- min(airquality_cleaned$Ozone)
+maxOzone <- max(airquality_cleaned$Ozone)
+# Now printing the output
+cat("The mean ozone level is", meanOzone, "and the standard deviation is", sdOzone)
+cat("The minimum ozone level is", minOzone, "and the maximum ozone level is", maxOzone)
+```
+
+## Question 3
+
+Finding the beta coefficients
+
+```{r}
+# First creating a design matrix 
+X <- model.matrix(dist ~ speed, data = cars)
+Y <- cars$dist
+
+# Now finding the beta coefficients using the solve() function
+beta <- solve(t(X) %*% X) %*% t(X) %*% Y
+print(beta)
+```
+
+## Question 4
+
+Now will check the coefficients using lm() function
+
+```{r}
+fit <- lm(dist ~ speed, data = cars)
+summary(fit)
+```
+
+Both methods of finding the beta coefficients gives consistent results, with the intercept being -17.5791 and the slope coefficient of speed being 3.9324 but we will check further if they truly give us the true value
+
+```{r}
+f <- function(a, b) {
+   Bhat <- solve(t(a) %*% a) %*% t(a) %*% b
+   Y_hat <- a %*% Bhat 
+   residuals <- b - Y_hat  
+   n <- nrow(a)  
+   p <- ncol(a)  
+   sigma_squared <- sum(residuals^2) / (n - p)
+   var_Bhat <- sigma_squared * solve(t(a) %*% a)  
+   std_error <- sqrt(diag(var_Bhat))
+   return(list("coeffients" = Bhat, "std error" = std_error))
+ }
+ 
+ z <- f(X, Y)
+ print(z)
+ fit$coefficients
+ z$coeffients
+ round(fit$coefficients, 5) == round(z$coeff, 5)
+ summary(fit)[["coefficients"]][, "Std. Error"]
+ 
+```
+
+This verifies that both our calculated values and the values obtained by running the model gives us the same answers.

@@ -1,8 +1,27 @@
 project:
-   type: website
-   title: "Practical 1"
+   type: book
    output-dir: _site
-  
+   
+book: 
+  title: Peer Assessed Practical for Statistical Computing
+  sidebar: 
+    border: true
+    background: light
+    position: right
+  navbar: 
+    search: true
+    background: light
+  chapters: 
+    - index.qmd
+    - Practical_Day2.qmd
+    - Practical_Day4.qmd
+    
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc-location: left
   
 
 
